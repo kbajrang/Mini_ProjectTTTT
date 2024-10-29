@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Details</title>
+    <style>
+        /* CSS styling for the page */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: left;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        #deadline-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ email['subject'] }}</h1>
+        <p>{{ email['body'] }}</p>
+        <button onclick="extractDeadline()">Extract Deadline</button>
+        <div id="deadline-result"></div>
+        <a href="{{ url_for('email_list') }}">Back to Email List</a>
+    </div>
+
+    <script>
+        function extractDeadline() {
+            fetch('/extract_deadline', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    body: "{{ email['body'] }}"  // Pass the email body to the backend
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.deadlines && data.deadlines.length > 0) {
+                    document.getElementById('deadline-result').innerHTML = 'Deadline: ' + data.deadlines.join(', ');
+                } else {
+                    document.getElementById('deadline-result').innerHTML = 'No deadlines found.';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('deadline-result').innerHTML = 'Error extracting deadline.';
+            });
+        }
+    </script>
+</body>
+</html>

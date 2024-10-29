@@ -1,0 +1,107 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling body and html */
+body, html {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #4285f4;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #357ae8;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #285dab;
+}
+
+/* Action buttons */
+.action-buttons {
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn.primary {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+}
+
+.btn.primary:hover {
+    background-color: #357ae8;
+}
+
+.btn.secondary {
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn.secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* Emails list */
+.emails-list {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.emailItem {
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.emailItem a {
+    color: #4285f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.emailItem a:hover {
+    text-decoration: underline;
+}
